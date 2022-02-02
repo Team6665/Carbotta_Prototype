@@ -50,11 +50,11 @@ public class Robot extends TimedRobot {
   private final XboxController driverController = new XboxController(0);
   //private final Joystick driverStick = new Joystick(0);
 
-  private final Timer timer = new Timer();
+  //private final Timer timer = new Timer();
   
   //Not useful in this program. Don't worry about these for now
-  private Command m_autonomousCommand;
-  private RobotContainer m_robotContainer;
+  //private Command m_autonomousCommand;
+  //private RobotContainer m_robotContainer;
 
   /**
    * This function is run when the robot is first started up and should be used for any
@@ -69,7 +69,7 @@ public class Robot extends TimedRobot {
     frontRightMotor.setInverted(true);
     backRightMotor.setInverted(true);
 
-    m_robotContainer = new RobotContainer();
+    //m_robotContainer = new RobotContainer();
   }
 
   /**
@@ -98,25 +98,25 @@ public class Robot extends TimedRobot {
   /** This autonomous runs the autonomous command selected by your {@link RobotContainer} class. */
   @Override
   public void autonomousInit() {
-    timer.reset();
-    timer.start();
-    m_autonomousCommand = m_robotContainer.getAutonomousCommand();
+    // timer.reset();
+    // timer.start();
+    // m_autonomousCommand = m_robotContainer.getAutonomousCommand();
 
-    // schedule the autonomous command (example)
-    if (m_autonomousCommand != null) {
-      m_autonomousCommand.schedule();
-    }
+    // // schedule the autonomous command (example)
+    // if (m_autonomousCommand != null) {
+    //   m_autonomousCommand.schedule();
+    // }
   }
 
   /** This function is called periodically during autonomous. */
   @Override
   public void autonomousPeriodic() {
     // Drive for 2 seconds
-    if (timer.get() < 2.0) {
-      robotDrive.arcadeDrive(0.5, 0.0); // drive forwards half speed
-    } else {
-      robotDrive.stopMotor(); // stop robot
-    }
+    // if (timer.get() < 2.0) {
+    //   robotDrive.arcadeDrive(0.5, 0.0); // drive forwards half speed
+    // } else {
+    //   robotDrive.stopMotor(); // stop robot
+    //}
   }
 
   @Override
@@ -125,9 +125,9 @@ public class Robot extends TimedRobot {
     // teleop starts running. If you want the autonomous to
     // continue until interrupted by another command, remove
     // this line or comment it out.
-    if (m_autonomousCommand != null) {
-      m_autonomousCommand.cancel();
-    }
+    //if (m_autonomousCommand != null) {
+    //  m_autonomousCommand.cancel();
+    //}
   }
 
   /** This function is called periodically during operator control. */
