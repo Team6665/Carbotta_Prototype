@@ -18,7 +18,14 @@ public final class Constants {
         public static final int RearLeftMotorPort = 1;
         public static final int FrontRightMotorPort = 2;
         public static final int RearRightMotorPort = 3;
+        public static final int kP = 1;
+        public static final int kI = 1;
+        public static final int kD = 1;
+        public static final int integral = 0;
+        public static final int previous_error = 0;
+        public static final int setpoint = 0;
     }
+    
 
     public static final class OIConstants {
         public static final int DriverControllerPort = 0;
