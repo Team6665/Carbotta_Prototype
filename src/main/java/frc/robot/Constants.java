@@ -18,6 +18,9 @@ public final class Constants {
         public static final int RearLeftMotorPort = 1;
         public static final int FrontRightMotorPort = 2;
         public static final int RearRightMotorPort = 3;
+        public static final int upperLauncherMotor = 13;
+        public static final int lowerLauncherMotor = 12;
+        public static final int intakeMotor = 14;
     }
 
     public static final class OIConstants {

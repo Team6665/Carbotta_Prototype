@@ -15,6 +15,7 @@ import edu.wpi.first.wpilibj2.command.RunCommand;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 import frc.robot.Constants.OIConstants;
 import frc.robot.subsytems.DriveTrainSubsystem;
+import frc.robot.subsytems.Launcher;
 import frc.robot.commands.HalveDriveSpeed;
 
 /**
@@ -27,6 +28,7 @@ public class RobotContainer {
   // The robot's subsystems and commands are defined here...
   // SUbsytems are instantiated here
   private final DriveTrainSubsystem DriveTrain = new DriveTrainSubsystem();
+  public final static Launcher launcher = new Launcher();
 
   SendableChooser<Command> m_chooser = new SendableChooser<>();
   
