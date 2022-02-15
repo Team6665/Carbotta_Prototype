@@ -13,12 +13,13 @@ import frc.robot.Constants.DriveTrainConstants;
 import frc.robot.Constants.PneumaticsConstants;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 
-public class Intake extends SubsystemBase {
+public class IntakeSubsystem extends SubsystemBase {
   WPI_VictorSPX motorIntake = new WPI_VictorSPX(DriveTrainConstants.intakeMotor);
   DoubleSolenoid deployIntake = new DoubleSolenoid(PneumaticsModuleType.CTREPCM, 1, 2);
+  //private final DoubleSolenoid doubleSolenoid = new DoubleSolenoid(PneumaticsModuleType.CTREPCM, 1, 2);
 
 /** Creates a new Intake. */
-  public Intake() {
+  public IntakeSubsystem() {
     motorIntake = new WPI_VictorSPX(DriveTrainConstants.intakeMotor);
     deployIntake = new DoubleSolenoid(PneumaticsModuleType.CTREPCM, PneumaticsConstants.intakeFront, PneumaticsConstants.intakeBack);
   }

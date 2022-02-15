@@ -11,7 +11,7 @@ import edu.wpi.first.wpilibj.motorcontrol.MotorControllerGroup;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants.DriveTrainConstants;
 
-public class Launcher extends SubsystemBase {
+public class LauncherSubsystem extends SubsystemBase {
   MotorController upperLauncherMotor = (MotorController) new WPI_VictorSPX(DriveTrainConstants.FrontLeftMotorPort);
   MotorController lowerLauncherMotor = (MotorController) new WPI_VictorSPX(DriveTrainConstants.RearLeftMotorPort);
 
@@ -21,7 +21,7 @@ public class Launcher extends SubsystemBase {
 
 
   /** Creates a new Launcher. */
-  public Launcher() {
+  public LauncherSubsystem() {
     upperLauncherMotor = (MotorController) new WPI_VictorSPX(DriveTrainConstants.FrontLeftMotorPort);
     lowerLauncherMotor = (MotorController) new WPI_VictorSPX(DriveTrainConstants.RearLeftMotorPort);
     
