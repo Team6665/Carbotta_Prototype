@@ -44,15 +44,15 @@ public class DriveTrainSubsystem extends SubsystemBase {
     robotDrive.setMaxOutput(maxOutput);
   }
 
-  public void setSetpoint(int setpoint) {
-      robotDrive.setpoint(setpoint);
-  }
+  // public void setSetpoint(int setpoint) {
+  //     robotDrive.setpoint(setpoint);
+  // }
 
-  public void PID(){
-    DriveTrainConstants.previous_error = DriveTrainConstants.setpoint - gyro.getAngle(); // Error = Target - Actual
-    DriveTrainConstants.integral += (DriveTrainConstants.previous_error*.02); // Integral is increased by the error*time (which is .02 seconds using normal IterativeRobot)
-    robotDrive.derivative = (DriveTrainConstants.previous_error - robotDrive.previous_error) / .02;
-    robotDrive.rcw = DriveTrainConstants.kP * DriveTrainConstants.previous_error + DriveTrainConstants.kI * robotDrive.integral + DriveTrainConstants.kD * derivative;
+  // public void PID(){
+  //   DriveTrainConstants.previous_error = DriveTrainConstants.setpoint - gyro.getAngle(); // Error = Target - Actual
+  //   DriveTrainConstants.integral += (DriveTrainConstants.previous_error*.02); // Integral is increased by the error*time (which is .02 seconds using normal IterativeRobot)
+  //   robotDrive.derivative = (DriveTrainConstants.previous_error - robotDrive.previous_error) / .02;
+  //   robotDrive.rcw = DriveTrainConstants.kP * DriveTrainConstants.previous_error + DriveTrainConstants.kI * robotDrive.integral + DriveTrainConstants.kD * derivative;
 }
 
   @Override

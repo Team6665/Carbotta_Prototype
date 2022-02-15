@@ -64,7 +64,23 @@ public class RobotContainer {
    */
   private void configureButtonBindings() {
     // While holding the shoulder button, drive at half speed
-    new JoystickButton(driverController, Button.kRightBumper.value).whenHeld(new HalveDriveSpeed(DriveTrain)); 
+    new JoystickButton(driverController, Button.kRightBumper.value).whenHeld(new HalveDriveSpeed(DriveTrain));
+        /*
+     * The output of GetRawButton is true/false depending on whether
+     * the button is pressed; Set takes a boolean for whether
+     * to use the default (false) channel or the other (true).
+     */
+    m_solenoid.set(driverController.getRawButton(kSolenoidButton));
+
+    /*
+     * In order to set the double solenoid, if just one button
+     * is pressed, set the solenoid to correspond to that button.
+     * If both are pressed, set the solenoid will be set to Forwards.
+     */
+    if (driverController.getRawButton(kDoubleSolenoidForward)) {
+      m_doubleSolenoid.set(DoubleSolenoid.Value.kForward);
+    } else if (driverController.getRawButton(kDoubleSolenoidReverse)) {
+      m_doubleSolenoid.set(DoubleSolenoid.Value.kReverse); 
   }
 
   /**

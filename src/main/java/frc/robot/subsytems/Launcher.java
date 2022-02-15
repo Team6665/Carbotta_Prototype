@@ -4,9 +4,6 @@
 
 package frc.robot.subsytems;
 
-import java.util.function.DoubleSupplier;
-
-import com.ctre.phoenix.motorcontrol.ControlMode;
 import com.ctre.phoenix.motorcontrol.can.WPI_VictorSPX;
 
 import edu.wpi.first.wpilibj.motorcontrol.MotorController;
