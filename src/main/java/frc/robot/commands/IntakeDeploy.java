@@ -5,12 +5,15 @@
 package frc.robot.commands;
 
 import edu.wpi.first.wpilibj2.command.CommandBase;
-import frc.robot.RobotContainer;
+import frc.robot.subsytems.IntakeSubsystem;
 
 public class IntakeDeploy extends CommandBase {
   /** Creates a new IntakeDeploy. */
-  public IntakeDeploy() {
-    addRequirements(RobotContainer.intake);
+  private final IntakeSubsystem intake;
+
+  public IntakeDeploy(IntakeSubsystem subsystem) {
+    intake = subsystem;
+    addRequirements(intake);
   }
 
   // Called just before this Command runs the first time
@@ -21,13 +24,13 @@ public class IntakeDeploy extends CommandBase {
   // Called repeatedly when this Command is scheduled to run
   @Override
   public void execute() {
-    RobotContainer.intake.deploy();
+    intake.deploy();
   }
 
   // Called once the command ends or is interrupted.
   @Override
   public void end(boolean interrupted) {
-    RobotContainer.intake.retract();
+    intake.retract();
   }
 
   // Returns true when the command should end.

@@ -5,24 +5,26 @@
 package frc.robot.commands;
 
 import edu.wpi.first.wpilibj2.command.CommandBase;
-import frc.robot.RobotContainer;
+import frc.robot.subsytems.IntakeSubsystem;
 
 public class IntakeRun extends CommandBase {
-    double speed;
+  private final IntakeSubsystem intake;
+  double speed;
 
-  public IntakeRun(double speed) {
+  public IntakeRun(IntakeSubsystem subsystem, double speed) {
     this.speed = speed;
-    addRequirements(RobotContainer.intake);
+    intake = subsystem;
+    addRequirements(intake);
   } 
 
   @Override
   public void initialize() {
-    RobotContainer.intake.set(0.0);
+    intake.set(0.0);
   }
 
   @Override
   public void execute() {
-    RobotContainer.intake.set(speed);
+    intake.set(speed);
   }
     // Use addRequirements() here to declare subsystem dependencies.
 

@@ -4,34 +4,39 @@
 
 package frc.robot.commands;
 
+//import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj2.command.CommandBase;
-import frc.robot.RobotContainer;
+//import frc.robot.RobotContainer;
+import frc.robot.subsytems.LauncherSubsystem;
 
 public class FireLauncher extends CommandBase {
+  private final LauncherSubsystem launcher;
+
   double speed;
 
   /** Creates a new FireLauncher. */
-  public FireLauncher(double speed) {
+  public FireLauncher(LauncherSubsystem subsystem, double speed) {
       this.speed = speed;
-      addRequirements(RobotContainer.launcher);
+      launcher = subsystem;
+      addRequirements(launcher);
   }
 
   // Called when the command is initially scheduled.
   @Override
   public void initialize() {
-    RobotContainer.launcher.set(0.0);
+    launcher.set(0.0);
   }
 
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    RobotContainer.launcher.set(speed);
+    launcher.set(speed);
   }
 
   // Called once the command ends or is interrupted.
   @Override
   public void end(boolean interrupted) {
-    RobotContainer.launcher.set(0.0);
+    launcher.set(0.0);
   }
 
   // Returns true when the command should end.
