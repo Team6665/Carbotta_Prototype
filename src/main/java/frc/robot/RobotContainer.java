@@ -63,7 +63,10 @@ public class RobotContainer {
     //new JoystickButton(driverController, Button.kX.value).whenHeld(new IntakeRun(intake, 0.75));
     new JoystickButton(driverController, Button.kA.value).whenHeld(new FireLauncher(launcher, 0.75));
     
-    new JoystickButton(driverController, Button.kB.value).whenHeld(new HalveDriveSpeed(DriveTrain)); 
+    new JoystickButton(driverController, Button.kB.value).whenHeld(new HalveDriveSpeed(DriveTrain));
+    //final JoystickButton dpadUp = new JoystickButton(driverController, 5);
+    
+    //dpadUp.whenHeld(new FireLauncher(launcher, 0.50));
   }
 
   /**
