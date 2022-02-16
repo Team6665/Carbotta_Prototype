@@ -17,9 +17,6 @@ public class LauncherSubsystem extends SubsystemBase {
 
   MotorControllerGroup launcherMotors = new  MotorControllerGroup(upperLauncherMotor,lowerLauncherMotor);
 
-  
-
-
   /** Creates a new Launcher. */
   public LauncherSubsystem() {
     upperLauncherMotor = (MotorController) new WPI_VictorSPX(DriveTrainConstants.FrontLeftMotorPort);
@@ -27,10 +24,10 @@ public class LauncherSubsystem extends SubsystemBase {
     
     lowerLauncherMotor.setInverted(true);
 
-    MotorControllerGroup launcherMotors = new  MotorControllerGroup(upperLauncherMotor,lowerLauncherMotor);
+    //MotorControllerGroup launcherMotors = new  MotorControllerGroup(upperLauncherMotor,lowerLauncherMotor);
   }
 
-  public void set( Double speed) {
+  public void set(Double speed) {
     launcherMotors.set(speed);
   }
 
