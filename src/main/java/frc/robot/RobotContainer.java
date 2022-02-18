@@ -11,10 +11,11 @@ import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 import frc.robot.Constants.OIConstants;
-//import frc.robot.subsytems.CameraSubsystem;
+import frc.robot.subsytems.CameraSubsystem;
 import frc.robot.subsytems.DriveTrainSubsystem;
 //import frc.robot.subsytems.IntakeSubsystem;
 import frc.robot.subsytems.LauncherSubsystem;
+import frc.robot.commands.DefaultDrive;
 import frc.robot.commands.FireLauncher;
 import frc.robot.commands.HalveDriveSpeed;
 //import frc.robot.commands.IntakeDeploy;
@@ -33,7 +34,7 @@ public class RobotContainer {
   private final DriveTrainSubsystem DriveTrain = new DriveTrainSubsystem();
   private final LauncherSubsystem launcher = new LauncherSubsystem();
   //private final IntakeSubsystem intake = new IntakeSubsystem();
-  //private final CameraSubsystem FrontCamera = new CameraSubsystem();
+  private final CameraSubsystem FrontCamera = new CameraSubsystem();
   
 
 
@@ -45,6 +46,7 @@ public class RobotContainer {
 
   /** The container for the robot. Contains subsystems, OI devices, and commands. */
   public RobotContainer() {
+    DriveTrain.setDefaultCommand(new DefaultDrive(DriveTrain, -driverController.getLeftY(), driverController.getRightX()));
 
     configureButtonBindings();
   
@@ -57,6 +59,7 @@ public class RobotContainer {
    * edu.wpi.first.wpilibj2.command.button.JoystickButton}.
    */
   private void configureButtonBindings() {
+
     //new JoystickButton(driverController, Button.kRightBumper.value).whenPressed(new IntakeDeploy(intake));
     //new JoystickButton(driverController, Button.kLeftBumper.value).whenPressed(new IntakeRetract(intake));
 
