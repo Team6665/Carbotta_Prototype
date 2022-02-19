@@ -8,10 +8,12 @@ import static edu.wpi.first.wpilibj.XboxController.Button;
 
 import edu.wpi.first.wpilibj.GenericHID;
 import edu.wpi.first.wpilibj.XboxController;
+import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj2.command.Command;
+import edu.wpi.first.wpilibj2.command.RunCommand;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 import frc.robot.Constants.OIConstants;
-//import frc.robot.subsytems.CameraSubsystem;
+import frc.robot.subsytems.CameraSubsystem;
 import frc.robot.subsytems.DriveTrainSubsystem;
 //import frc.robot.subsytems.IntakeSubsystem;
 import frc.robot.subsytems.LauncherSubsystem;
@@ -29,15 +31,13 @@ import frc.robot.commands.HalveDriveSpeed;
  */
 public class RobotContainer {
   // The robot's subsystems and commands are defined here...
-  // SUbsytems are instantiated here
   private final DriveTrainSubsystem DriveTrain = new DriveTrainSubsystem();
   private final LauncherSubsystem launcher = new LauncherSubsystem();
   //private final IntakeSubsystem intake = new IntakeSubsystem();
-  //private final CameraSubsystem FrontCamera = new CameraSubsystem();
+  private final CameraSubsystem FrontCamera = new CameraSubsystem();
   
-
-
-  //SendableChooser<Command> chooser = new SendableChooser<>();
+  SendableChooser<Command> chooser = new SendableChooser<>();
+  
   
   // Instatiates controller for the human driver
   XboxController driverController = new XboxController(OIConstants.DriverControllerPort);
@@ -47,6 +47,12 @@ public class RobotContainer {
   public RobotContainer() {
 
     configureButtonBindings();
+    DriveTrain.setDefaultCommand(
+      new RunCommand(
+        () ->
+        DriveTrain.arcadeDrive(
+                -driverController.getLeftY(), driverController.getRightX()),
+        DriveTrain));
   
   }
 
