@@ -6,12 +6,16 @@ package frc.robot;
 
 import static edu.wpi.first.wpilibj.XboxController.Button;
 
+import edu.wpi.first.wpilibj.ADXRS450_Gyro;
+import edu.wpi.first.wpilibj.SPI;
 import edu.wpi.first.wpilibj.GenericHID;
 import edu.wpi.first.wpilibj.XboxController;
+import edu.wpi.first.wpilibj.interfaces.Gyro;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.RunCommand;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
+import frc.robot.Constants.GyroContants;
 import frc.robot.Constants.OIConstants;
 import frc.robot.subsytems.CameraSubsystem;
 import frc.robot.subsytems.DriveTrainSubsystem;
@@ -35,7 +39,8 @@ public class RobotContainer {
   private final DriveTrainSubsystem DriveTrain = new DriveTrainSubsystem();
   private final LauncherSubsystem launcher = new LauncherSubsystem();
   //private final IntakeSubsystem intake = new IntakeSubsystem();
-  private final CameraSubsystem FrontCamera = new CameraSubsystem();
+  //private final CameraSubsystem FrontCamera = new CameraSubsystem();
+  private final ADXRS450_Gyro Gyro = new ADXRS450_Gyro();
   
   SendableChooser<Command> chooser = new SendableChooser<>();
   
@@ -47,6 +52,8 @@ public class RobotContainer {
   /** The container for the robot. Contains subsystems, OI devices, and commands. */
   public RobotContainer() {
     DriveTrain.setDefaultCommand(new DefaultDrive(DriveTrain, -driverController.getLeftY(), driverController.getRightX()));
+
+    Gyro.calibrate();
 
     configureButtonBindings();
     DriveTrain.setDefaultCommand(

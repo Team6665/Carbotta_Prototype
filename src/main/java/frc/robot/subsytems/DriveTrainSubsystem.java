@@ -5,8 +5,13 @@
 package frc.robot.subsytems;
 
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
+import frc.robot.RobotContainer;
 import frc.robot.Constants.DriveTrainConstants;
+import frc.robot.Constants.GyroContants;
+import edu.wpi.first.wpilibj.ADXRS450_Gyro;
+import edu.wpi.first.wpilibj.SPI;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
+import edu.wpi.first.wpilibj.interfaces.Gyro;
 import edu.wpi.first.wpilibj.motorcontrol.MotorController;
 import edu.wpi.first.wpilibj.motorcontrol.MotorControllerGroup;
 import com.ctre.phoenix.motorcontrol.can.WPI_VictorSPX;
@@ -15,6 +20,13 @@ import edu.wpi.first.math.controller.PIDController;
 public class DriveTrainSubsystem extends SubsystemBase {
 
     PIDController pid = new PIDController(DriveTrainConstants.kP, DriveTrainConstants.kI, DriveTrainConstants.kD);
+    
+    private static final double kAngleSetpoint = 0.0;
+	  private static final double kP = 0.005; // propotional turning constant
+    public static final double kVoltsPerDegreePerSecond = 0.0128;
+
+    //Instantiating the Gyro
+    private ADXRS450_Gyro gyro = new ADXRS450_Gyro(GyroContants.kGyroPort);
 
     //Creating the date structure that refer to the 4 motors (and controllers) that run the drivetrain. 
     private final MotorController frontLeftMotor = (MotorController) new WPI_VictorSPX(DriveTrainConstants.FrontLeftMotorPort);
@@ -43,6 +55,13 @@ public class DriveTrainSubsystem extends SubsystemBase {
   public void setMaxOutput(double maxOutput) {
     robotDrive.setMaxOutput(maxOutput);
   }
+
+  // public void getTurningValue() {
+  //   double turningValue = (kAngleSetpoint - Gyro.getAngle()) * kP;
+	// 	// Invert the direction of the turn if we are going backwards
+	// 	turningValue = Math.copySign(turningValue, RobotContainer.driverController.getY());
+	// 	RobotContainer.arcadeDrive(driverController.getY(), turningValue);
+  // }
 
   // public void setSetpoint(int setpoint) {
   //     robotDrive.setpoint(setpoint);
