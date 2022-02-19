@@ -17,6 +17,7 @@ import frc.robot.subsytems.CameraSubsystem;
 import frc.robot.subsytems.DriveTrainSubsystem;
 //import frc.robot.subsytems.IntakeSubsystem;
 import frc.robot.subsytems.LauncherSubsystem;
+import frc.robot.commands.DefaultDrive;
 import frc.robot.commands.FireLauncher;
 import frc.robot.commands.HalveDriveSpeed;
 //import frc.robot.commands.IntakeDeploy;
@@ -45,6 +46,7 @@ public class RobotContainer {
 
   /** The container for the robot. Contains subsystems, OI devices, and commands. */
   public RobotContainer() {
+    DriveTrain.setDefaultCommand(new DefaultDrive(DriveTrain, -driverController.getLeftY(), driverController.getRightX()));
 
     configureButtonBindings();
     DriveTrain.setDefaultCommand(
@@ -63,13 +65,17 @@ public class RobotContainer {
    * edu.wpi.first.wpilibj2.command.button.JoystickButton}.
    */
   private void configureButtonBindings() {
+
     //new JoystickButton(driverController, Button.kRightBumper.value).whenPressed(new IntakeDeploy(intake));
     //new JoystickButton(driverController, Button.kLeftBumper.value).whenPressed(new IntakeRetract(intake));
 
     //new JoystickButton(driverController, Button.kX.value).whenHeld(new IntakeRun(intake, 0.75));
     new JoystickButton(driverController, Button.kA.value).whenHeld(new FireLauncher(launcher, 0.75));
     
-    new JoystickButton(driverController, Button.kB.value).whenHeld(new HalveDriveSpeed(DriveTrain)); 
+    new JoystickButton(driverController, Button.kB.value).whenHeld(new HalveDriveSpeed(DriveTrain));
+    //final JoystickButton dpadUp = new JoystickButton(driverController, 5);
+    
+    //dpadUp.whenHeld(new FireLauncher(launcher, 0.50));
   }
 
   /**
