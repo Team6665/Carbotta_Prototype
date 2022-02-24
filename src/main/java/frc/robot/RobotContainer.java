@@ -19,14 +19,16 @@ import frc.robot.Constants.GyroContants;
 import frc.robot.Constants.OIConstants;
 import frc.robot.subsytems.CameraSubsystem;
 import frc.robot.subsytems.DriveTrainSubsystem;
-//import frc.robot.subsytems.IntakeSubsystem;
+import frc.robot.subsytems.IntakeSubsystem;
 import frc.robot.subsytems.LauncherSubsystem;
 import frc.robot.commands.DefaultDrive;
 import frc.robot.commands.FireLauncher;
 import frc.robot.commands.HalveDriveSpeed;
-//import frc.robot.commands.IntakeDeploy;
-//import frc.robot.commands.IntakeRetract;
-//import frc.robot.commands.IntakeRun;
+import frc.robot.commands.IntakeDeploy;
+import frc.robot.commands.IntakeRetract;
+import frc.robot.commands.IntakeRun;
+import edu.wpi.first.wpilibj.GenericHID.RumbleType;
+
 
 /**
  * This class is where the bulk of the robot should be declared. Since Command-based is a
@@ -38,7 +40,7 @@ public class RobotContainer {
   // The robot's subsystems and commands are defined here...
   private final DriveTrainSubsystem DriveTrain = new DriveTrainSubsystem();
   private final LauncherSubsystem launcher = new LauncherSubsystem();
-  //private final IntakeSubsystem intake = new IntakeSubsystem();
+  private final IntakeSubsystem intake = new IntakeSubsystem();
   //private final CameraSubsystem FrontCamera = new CameraSubsystem();
   private final ADXRS450_Gyro Gyro = new ADXRS450_Gyro();
   
@@ -72,17 +74,19 @@ public class RobotContainer {
    * edu.wpi.first.wpilibj2.command.button.JoystickButton}.
    */
   private void configureButtonBindings() {
+    driverController.setRumble(RumbleType.kLeftRumble, 1.0);
+    driverController.setRumble(RumbleType.kRightRumble, 1.0);
 
-    //new JoystickButton(driverController, Button.kRightBumper.value).whenPressed(new IntakeDeploy(intake));
-    //new JoystickButton(driverController, Button.kLeftBumper.value).whenPressed(new IntakeRetract(intake));
+    new JoystickButton(driverController, Button.kRightBumper.value).whenPressed(new IntakeDeploy(intake));
+    new JoystickButton(driverController, Button.kLeftBumper.value).whenPressed(new IntakeRetract(intake));
 
-    //new JoystickButton(driverController, Button.kX.value).whenHeld(new IntakeRun(intake, 0.75));
+    new JoystickButton(driverController, Button.kX.value).whenHeld(new IntakeRun(intake, 0.75));
     new JoystickButton(driverController, Button.kA.value).whenHeld(new FireLauncher(launcher, 0.75));
     
     new JoystickButton(driverController, Button.kB.value).whenHeld(new HalveDriveSpeed(DriveTrain));
-    //final JoystickButton dpadUp = new JoystickButton(driverController, 5);
+    final JoystickButton dpadUp = new JoystickButton(driverController, 5);
     
-    //dpadUp.whenHeld(new FireLauncher(launcher, 0.50));
+    dpadUp.whenPressed(new FireLauncher(launcher, 0.50));
   }
 
   /**
