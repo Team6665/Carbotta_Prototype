@@ -16,11 +16,18 @@ import edu.wpi.first.wpilibj.motorcontrol.MotorController;
 import edu.wpi.first.wpilibj.motorcontrol.MotorControllerGroup;
 import com.ctre.phoenix.motorcontrol.can.WPI_VictorSPX;
 import edu.wpi.first.math.controller.PIDController;
+import edu.wpi.first.wpilibj.Encoder;
+import edu.wpi.first.wpilibj.CounterBase;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;//encoder data connect to the smartdashboard
+
 
 public class DriveTrainSubsystem extends SubsystemBase {
 
+    public final Encoder encoder; //establish encoder
+
     PIDController pid = new PIDController(DriveTrainConstants.kP, DriveTrainConstants.kI, DriveTrainConstants.kD);
-    
+    private final PIDController drivetrainPIDController = new PIDController(1,0,0);
+  
     private static final double kAngleSetpoint = 0.0;
 	  private static final double kP = 0.005; // propotional turning constant
     public static final double kVoltsPerDegreePerSecond = 0.0128;
@@ -46,6 +53,12 @@ public class DriveTrainSubsystem extends SubsystemBase {
     //Set the two right motors to turn backwards when given a positive voltage. Consult with Euclid as to why you need to run one set of motors in reverse.
     rightMotors.setInverted(true);
 
+
+    //encoder configuration
+    encoder = new Encoder(1,2,false,CounterBase.EncodingType.k4X);//Encoder(port1, port2, direction(true inversed, false default),CounterBase.Encoding Type, encoding rate (k1X,k2X,k4X(the highest it can goes)))
+    encoder.setSamplesToAverage(10);//(1-255) larger number means smoother, but might be less accurate
+    encoder.setDistancePerPulse(1/360*6*Math.PI);//how far the mechanism attached to the encoder moves per pulse(unit in inches): 1/360countes*diameter*Math.PI
+    encoder.setMinRate(1);//distance in inches/second; this is the lowest rate the encoder will not stop 
   }
 
   public void arcadeDrive(double fwd, double rot) {
@@ -54,8 +67,19 @@ public class DriveTrainSubsystem extends SubsystemBase {
 
   public void setMaxOutput(double maxOutput) {
     robotDrive.setMaxOutput(maxOutput);
+    // final double leftOutput =
+    // DriveTrainSubsystem.calculate(encoder.getRate(), );
   }
 
+  public void gyroAngleReset(){
+    gyro.reset();
+  }
+  
+  public double getGyroValue(){
+    return gyro.getRate();
+    
+  }
+  
   // public void getTurningValue() {
   //   double turningValue = (kAngleSetpoint - Gyro.getAngle()) * kP;
 	// 	// Invert the direction of the turn if we are going backwards
@@ -77,5 +101,7 @@ public class DriveTrainSubsystem extends SubsystemBase {
   @Override
   public void periodic() {
     // This method will be called once per scheduler run
+    SmartDashboard.putNumber("encoderDistance",encoder.getDistance());
+    SmartDashboard.putNumber("encoderRate",encoder.getRate());
   }
 }
