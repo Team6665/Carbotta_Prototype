@@ -30,7 +30,11 @@ public final class Constants {
         public static final int previous_error = 0;
         public static final int setpoint = 0;
     }
+    
 
+    public static final class IntakeConstants {
+        public static final int intakeMotorSpeed = 0;
+    }
     public static final class PneumaticsConstants {
         public static final int intakeFront = 1;
         public static final int intakeBack = 5;
