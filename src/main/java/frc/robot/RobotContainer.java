@@ -17,6 +17,7 @@ import edu.wpi.first.wpilibj2.command.RunCommand;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 import frc.robot.Constants.GyroContants;
 import frc.robot.Constants.OIConstants;
+import frc.robot.Constants.IntakeConstants;
 import frc.robot.subsytems.CameraSubsystem;
 import frc.robot.subsytems.DriveTrainSubsystem;
 import frc.robot.subsytems.IntakeSubsystem;
