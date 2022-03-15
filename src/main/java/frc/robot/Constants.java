@@ -35,6 +35,14 @@ public final class Constants {
     public static final class IntakeConstants {
         public static final int intakeMotorSpeed = 0;
     }
+
+    public static final class FeederConstant {
+        public static final int frontFeederMotor = 0;
+        public static final int backFeederMotor = 0;
+        public static final int frontFeederSpeed = 0;
+        public static final int backFeederSpeed = 0;
+
+    }
     public static final class PneumaticsConstants {
         public static final int intakeFront = 1;
         public static final int intakeBack = 5;
