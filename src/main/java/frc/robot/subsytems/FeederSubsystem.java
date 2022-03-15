@@ -6,16 +6,46 @@ package frc.robot.subsytems;
 
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants;
+import frc.robot.Constants.FeederConstant;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
-
+import com.ctre.phoenix.motorcontrol.can.WPI_VictorSPX;
+import com.ctre.phoenix.motorcontrol.ControlMode;
 
 public class FeederSubsystem extends SubsystemBase {
+  WPI_VictorSPX motorFeederFront = new WPI_VictorSPX(FeederConstant.frontFeederMotor);
+  WPI_VictorSPX motorFeederBack = new WPI_VictorSPX(FeederConstant.backFeederMotor);
   /** Creates a new FeederSubsystem. */
-  public FeederSubsystem() {}
+  
+  public FeederSubsystem() {
+    motorFeederFront = new WPI_VictorSPX(FeederConstant.frontFeederMotor);
+    motorFeederFront = new WPI_VictorSPX(FeederConstant.backFeederMotor);
+  }
 
+  public boolean isRunning;
+  public boolean isInverted;
+
+  public void startFeeding(){
+    motorFeederFront.set(ControlMode.PercentOutput, Constants.FeederConstant.frontFeederSpeed);
+    motorFeederBack.set(ControlMode.PercentOutput, Constants.FeederConstant.backFeederSpeed);
+    isRunning = true;
+  }
+
+  public void stopFeeding(){
+    isRunning = false;
+  }
+
+  public void inverFeeder(){
+    isInverted = !this.isInverted;
+    int sign = isInverted ? 1: -1;
+    if (isRunning) motorFeederFront.set(ControlMode.PercentOutput, sign * Constants.FeederConstant.frontFeederSpeed);  
+    if (isRunning) motorFeederBack.set(ControlMode.PercentOutput, sign* Constants.FeederConstant.backFeederSpeed);
+
+  }
+  
   @Override
   public void periodic() {
+    SmartDashboard.putBoolean("FeederStatus", isRunning);
     // This method will be called once per scheduler run
   
   }
