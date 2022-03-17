@@ -8,7 +8,7 @@ import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.PneumaticsModuleType;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
-import com.ctre.phoenix.motorcontrol.can.WPI_VictorSPX;
+import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 import com.ctre.phoenix.motorcontrol.ControlMode;
 
 import frc.robot.Constants;
@@ -17,15 +17,15 @@ import frc.robot.Constants.PneumaticsConstants;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 
 public class IntakeSubsystem extends SubsystemBase {
-  WPI_VictorSPX motorIntake = new WPI_VictorSPX(DriveTrainConstants.intakeMotor);
-  DoubleSolenoid deployIntake = new DoubleSolenoid(PneumaticsModuleType.CTREPCM, 1, 2);
+  WPI_TalonSRX motorIntake = new WPI_TalonSRX(DriveTrainConstants.intakeMotor);
+  //DoubleSolenoid deployIntake = new DoubleSolenoid(PneumaticsModuleType.CTREPCM, 1, 2);
   //private final DoubleSolenoid doubleSolenoid = new DoubleSolenoid(PneumaticsModuleType.CTREPCM, 1, 2);
 
 /** Creates a new Intake. */
   public IntakeSubsystem() {
    // motorIntake.configFactoryDefault();
-    motorIntake = new WPI_VictorSPX(DriveTrainConstants.intakeMotor);
-    deployIntake = new DoubleSolenoid(PneumaticsModuleType.CTREPCM, PneumaticsConstants.intakeFront, PneumaticsConstants.intakeBack);
+    motorIntake = new WPI_TalonSRX(DriveTrainConstants.intakeMotor);
+    //deployIntake = new DoubleSolenoid(PneumaticsModuleType.CTREPCM, PneumaticsConstants.intakeFront, PneumaticsConstants.intakeBack);
   } 
  
 
@@ -37,12 +37,12 @@ public class IntakeSubsystem extends SubsystemBase {
     
 
   public void deploy() {
-    deployIntake.set(DoubleSolenoid.Value.kForward);
+    //deployIntake.set(DoubleSolenoid.Value.kForward);
     isRetracted = false;
   }
 
   public void retract() {
-    deployIntake.set(DoubleSolenoid.Value.kReverse);
+    //deployIntake.set(DoubleSolenoid.Value.kReverse);
     isDeployed = false;
   }
   

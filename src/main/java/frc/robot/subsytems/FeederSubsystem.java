@@ -9,17 +9,17 @@ import frc.robot.Constants;
 import frc.robot.Constants.FeederConstant;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
-import com.ctre.phoenix.motorcontrol.can.WPI_VictorSPX;
+import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 import com.ctre.phoenix.motorcontrol.ControlMode;
 
 public class FeederSubsystem extends SubsystemBase {
-  WPI_VictorSPX motorFeederFront = new WPI_VictorSPX(FeederConstant.frontFeederMotor);
-  WPI_VictorSPX motorFeederBack = new WPI_VictorSPX(FeederConstant.backFeederMotor);
+  WPI_TalonSRX motorFeederFront = new WPI_TalonSRX(FeederConstant.frontFeederMotor);
+  WPI_TalonSRX motorFeederBack = new WPI_TalonSRX(FeederConstant.backFeederMotor);
   /** Creates a new FeederSubsystem. */
   
   public FeederSubsystem() {
-    motorFeederFront = new WPI_VictorSPX(FeederConstant.frontFeederMotor);
-    motorFeederFront = new WPI_VictorSPX(FeederConstant.backFeederMotor);
+    motorFeederFront = new WPI_TalonSRX(FeederConstant.frontFeederMotor);
+    motorFeederFront = new WPI_TalonSRX(FeederConstant.backFeederMotor);
   }
 
   public boolean isRunning;

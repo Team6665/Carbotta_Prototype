@@ -69,7 +69,7 @@
         },
         {
             "groupId": "com.ctre.phoenix.sim",
-            "artifactId": "simVictorSPX",
+            "artifactId": "simTalonSRX",
             "version": "5.20.2",
             "isJar": false,
             "skipInvalidPlatforms": true,
@@ -213,9 +213,9 @@
         },
         {
             "groupId": "com.ctre.phoenix.sim",
-            "artifactId": "simVictorSPX",
+            "artifactId": "simTalonSRX",
             "version": "5.20.2",
-            "libName": "CTRE_SimVictorSPX",
+            "libName": "CTRE_SimTalonSRX",
             "headerClassifier": "headers",
             "sharedLibrary": true,
             "skipInvalidPlatforms": true,

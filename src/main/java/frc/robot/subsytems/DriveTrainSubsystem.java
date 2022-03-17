@@ -14,7 +14,7 @@ import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 import edu.wpi.first.wpilibj.interfaces.Gyro;
 import edu.wpi.first.wpilibj.motorcontrol.MotorController;
 import edu.wpi.first.wpilibj.motorcontrol.MotorControllerGroup;
-import com.ctre.phoenix.motorcontrol.can.WPI_VictorSPX;
+import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 import edu.wpi.first.math.controller.PIDController;
 import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.CounterBase;
@@ -23,7 +23,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;//encoder data connec
 
 public class DriveTrainSubsystem extends SubsystemBase {
 
-    public final Encoder encoder; //establish encoder
+    //public final Encoder encoder; //establish encoder
 
     PIDController pid = new PIDController(DriveTrainConstants.kP, DriveTrainConstants.kI, DriveTrainConstants.kD);
     private final PIDController drivetrainPIDController = new PIDController(1,0,0);
@@ -36,10 +36,10 @@ public class DriveTrainSubsystem extends SubsystemBase {
     private ADXRS450_Gyro gyro = new ADXRS450_Gyro(GyroContants.kGyroPort);
 
     //Creating the date structure that refer to the 4 motors (and controllers) that run the drivetrain. 
-    private final MotorController frontLeftMotor = (MotorController) new WPI_VictorSPX(DriveTrainConstants.FrontLeftMotorPort);
-    private final MotorController backLeftMotor = (MotorController) new WPI_VictorSPX(DriveTrainConstants.RearLeftMotorPort);
-    private final MotorController frontRightMotor = (MotorController) new WPI_VictorSPX(DriveTrainConstants.FrontRightMotorPort);
-    private final MotorController backRightMotor = (MotorController) new WPI_VictorSPX(DriveTrainConstants.RearRightMotorPort);
+    private final MotorController frontLeftMotor = (MotorController) new WPI_TalonSRX(DriveTrainConstants.FrontLeftMotorPort);
+    private final MotorController backLeftMotor = (MotorController) new WPI_TalonSRX(DriveTrainConstants.RearLeftMotorPort);
+    private final MotorController frontRightMotor = (MotorController) new WPI_TalonSRX(DriveTrainConstants.FrontRightMotorPort);
+    private final MotorController backRightMotor = (MotorController) new WPI_TalonSRX(DriveTrainConstants.RearRightMotorPort);
 
     //Group the motors on each side together as controller groups to allow for combined control
     private final MotorControllerGroup leftMotors = new  MotorControllerGroup(frontLeftMotor,backLeftMotor);
@@ -54,11 +54,11 @@ public class DriveTrainSubsystem extends SubsystemBase {
     rightMotors.setInverted(true);
 
 
-    //encoder configuration
-    encoder = new Encoder(1,2,false,CounterBase.EncodingType.k4X);//Encoder(port1, port2, direction(true inversed, false default),CounterBase.Encoding Type, encoding rate (k1X,k2X,k4X(the highest it can goes)))
-    encoder.setSamplesToAverage(10);//(1-255) larger number means smoother, but might be less accurate
-    encoder.setDistancePerPulse(1/360*6*Math.PI);//how far the mechanism attached to the encoder moves per pulse(unit in inches): 1/360countes*diameter*Math.PI
-    encoder.setMinRate(1);//distance in inches/second; this is the lowest rate the encoder will not stop 
+   //encoder configuration
+  //   encoder = new Encoder(1,2,false,CounterBase.EncodingType.k4X);//Encoder(port1, port2, direction(true inversed, false default),CounterBase.Encoding Type, encoding rate (k1X,k2X,k4X(the highest it can goes)))
+  //   encoder.setSamplesToAverage(10);//(1-255) larger number means smoother, but might be less accurate
+  //   encoder.setDistancePerPulse(1/360*6*Math.PI);//how far the mechanism attached to the encoder moves per pulse(unit in inches): 1/360countes*diameter*Math.PI
+  //   encoder.setMinRate(1);//distance in inches/second; this is the lowest rate the encoder will not stop 
   }
 
   public void arcadeDrive(double fwd, double rot) {
@@ -101,7 +101,7 @@ public class DriveTrainSubsystem extends SubsystemBase {
   @Override
   public void periodic() {
     // This method will be called once per scheduler run
-    SmartDashboard.putNumber("encoderDistance",encoder.getDistance());
-    SmartDashboard.putNumber("encoderRate",encoder.getRate());
+    //SmartDashboard.putNumber("encoderDistance",encoder.getDistance());
+    //SmartDashboard.putNumber("encoderRate",encoder.getRate());
   }
 }

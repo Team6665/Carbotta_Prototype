@@ -4,7 +4,7 @@
 
 package frc.robot.subsytems;
 
-import com.ctre.phoenix.motorcontrol.can.WPI_VictorSPX;
+import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 
 import edu.wpi.first.wpilibj.motorcontrol.MotorController;
 import edu.wpi.first.wpilibj.motorcontrol.MotorControllerGroup;
@@ -13,15 +13,15 @@ import frc.robot.Constants.DriveTrainConstants;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 public class LauncherSubsystem extends SubsystemBase {
-  MotorController upperLauncherMotor = (MotorController) new WPI_VictorSPX(DriveTrainConstants.FrontLeftMotorPort);
-  MotorController lowerLauncherMotor = (MotorController) new WPI_VictorSPX(DriveTrainConstants.RearLeftMotorPort);
+  MotorController upperLauncherMotor = (MotorController) new WPI_TalonSRX(DriveTrainConstants.FrontLeftMotorPort);
+  MotorController lowerLauncherMotor = (MotorController) new WPI_TalonSRX(DriveTrainConstants.RearLeftMotorPort);
 
   MotorControllerGroup launcherMotors = new  MotorControllerGroup(upperLauncherMotor,lowerLauncherMotor);
 
   /** Creates a new Launcher. */
   public LauncherSubsystem() {
-    upperLauncherMotor = (MotorController) new WPI_VictorSPX(DriveTrainConstants.FrontLeftMotorPort);
-    lowerLauncherMotor = (MotorController) new WPI_VictorSPX(DriveTrainConstants.RearLeftMotorPort);
+    upperLauncherMotor = (MotorController) new WPI_TalonSRX(DriveTrainConstants.FrontLeftMotorPort);
+    lowerLauncherMotor = (MotorController) new WPI_TalonSRX(DriveTrainConstants.RearLeftMotorPort);
     
     lowerLauncherMotor.setInverted(true);
 

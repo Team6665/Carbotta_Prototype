@@ -42,7 +42,7 @@ public class RobotContainer {
   private final DriveTrainSubsystem DriveTrain = new DriveTrainSubsystem();
   private final LauncherSubsystem launcher = new LauncherSubsystem();
   private final IntakeSubsystem intake = new IntakeSubsystem();
-  //private final CameraSubsystem FrontCamera = new CameraSubsystem();
+  private final CameraSubsystem FrontCamera = new CameraSubsystem();
   private final ADXRS450_Gyro Gyro = new ADXRS450_Gyro();
   
   SendableChooser<Command> chooser = new SendableChooser<>();
