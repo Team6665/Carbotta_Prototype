@@ -20,10 +20,10 @@ import frc.robot.Constants.OIConstants;
 import frc.robot.Constants.IntakeConstants;
 import frc.robot.subsytems.CameraSubsystem;
 import frc.robot.subsytems.DriveTrainSubsystem;
-// import frc.robot.subsytems.IntakeSubsystem;
-// import frc.robot.subsytems.LauncherSubsystem;
+//import frc.robot.subsytems.IntakeSubsystem;
+//import frc.robot.subsytems.LauncherSubsystem;
 import frc.robot.commands.DefaultDrive;
-// import frc.robot.commands.FireLauncher;
+//import frc.robot.commands.FireLauncher;
 import frc.robot.commands.HalveDriveSpeed;
 // import frc.robot.commands.IntakeDeploy;
 // import frc.robot.commands.IntakeRetract;
@@ -40,9 +40,9 @@ import edu.wpi.first.wpilibj.GenericHID.RumbleType;
 public class RobotContainer {
   // The robot's subsystems and commands are defined here...
   private final DriveTrainSubsystem DriveTrain = new DriveTrainSubsystem();
-  //private final LauncherSubsystem launcher = new LauncherSubsystem();
- // private final IntakeSubsystem intake = new IntakeSubsystem();
-  private final CameraSubsystem FrontCamera = new CameraSubsystem();
+  // private final LauncherSubsystem launcher = new LauncherSubsystem();
+  // private final IntakeSubsystem intake = new IntakeSubsystem();
+  //private final CameraSubsystem FrontCamera = new CameraSubsystem();
   private final ADXRS450_Gyro Gyro = new ADXRS450_Gyro();
   
   SendableChooser<Command> chooser = new SendableChooser<>();
@@ -87,7 +87,7 @@ public class RobotContainer {
     new JoystickButton(driverController, Button.kB.value).whenHeld(new HalveDriveSpeed(DriveTrain));
     final JoystickButton dpadUp = new JoystickButton(driverController, 5);
     
-    // dpadUp.whenPressed(new FireLauncher(launcher, 0.50));
+    //dpadUp.whenPressed(new FireLauncher(launcher, 0.50));
   }
 
   /**
