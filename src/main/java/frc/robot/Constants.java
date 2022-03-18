@@ -22,7 +22,7 @@ public final class Constants {
         public static final int RearRightMotorPort = 2;
         public static final int upperLauncherMotor = 13;
         //public static final int lowerLauncherMotor = 12;
-        //public static final int intakeMotor = 13;
+        public static final int intakeMotor = 13;
         public static final int kP = 1;
         public static final int kI = 1;
         public static final int kD = 1;
