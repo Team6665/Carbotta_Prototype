@@ -27,8 +27,6 @@ public class IntakeSubsystem extends SubsystemBase {
     motorIntake = new WPI_TalonSRX(DriveTrainConstants.intakeMotor);
     //deployIntake = new DoubleSolenoid(PneumaticsModuleType.CTREPCM, PneumaticsConstants.intakeFront, PneumaticsConstants.intakeBack);
   } 
- 
-
 
   public boolean isRunning = false;
   public boolean isDeployed = false;

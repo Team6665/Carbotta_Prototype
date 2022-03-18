@@ -12,6 +12,8 @@ public class LimelightSubsystem extends SubsystemBase {
     public LimelightSubsystem (String networkTableName) {
         this.limelight = NetworkTableInstance.getDefault().getTable(networkTableName);
     }
+    
+
     // public double getLimelightOutput(int index) throws GoalNotFoundException{
 
     // }

@@ -20,8 +20,7 @@ public final class Constants {
         public static final int RearLeftMotorPort = 0;
         public static final int FrontRightMotorPort = 3;
         public static final int RearRightMotorPort = 2;
-        public static final int LauncherMotor = 13;
-        //public static final int lowerLauncherMotor = 12;
+        public static final int LauncherMotor = 15;
         public static final int intakeMotor = 13;
         public static final int kP = 1;
         public static final int kI = 1;
@@ -31,7 +30,9 @@ public final class Constants {
         public static final int setpoint = 0;
     }
     
-
+    public static final class LauncherConstants {
+        public static final int LauncherSpeed = 0;
+    }
     public static final class IntakeConstants {
         public static final int intakeMotorSpeed = 0;
     }

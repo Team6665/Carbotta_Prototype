@@ -5,39 +5,52 @@
 package frc.robot.subsytems;
 
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
-
-import edu.wpi.first.wpilibj.motorcontrol.MotorController;
-import edu.wpi.first.wpilibj.motorcontrol.MotorControllerGroup;
+import com.ctre.phoenix.motorcontrol.ControlMode;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants.DriveTrainConstants;
+import frc.robot.Constants.LauncherConstants;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
-public class LauncherSubsystem extends SubsystemBase {
-  MotorController LauncherMotor = (MotorController) new WPI_TalonSRX(DriveTrainConstants.LauncherMotor);
-  //MotorController lowerLauncherMotor = (MotorController) new WPI_TalonSRX(DriveTrainConstants.RearLeftMotorPort);
 
-  //MotorControllerGroup launcherMotors = new  MotorControllerGroup(upperLauncherMotor,lowerLauncherMotor);
+public class LauncherSubsystem extends SubsystemBase {
+  WPI_TalonSRX motorLauncher = new WPI_TalonSRX(DriveTrainConstants.LauncherMotor);
 
   /** Creates a new Launcher. */
   public LauncherSubsystem() {
-    LauncherMotor = (MotorController) new WPI_TalonSRX(DriveTrainConstants.LauncherMotor);
-    //lowerLauncherMotor = (MotorController) new WPI_TalonSRX(DriveTrainConstants.RearLeftMotorPort);
-    
-    //lowerLauncherMotor.setInverted(true);
-
-    //MotorControllerGroup launcherMotors = new  MotorControllerGroup(upperLauncherMotor,lowerLauncherMotor);
-  }
+    motorLauncher = new WPI_TalonSRX(DriveTrainConstants.LauncherMotor);  }
 
   public void set(Double speed) {
-    LauncherMotor.set(speed);
+    motorLauncher.set(speed);
   }
 
+  public boolean isRunning;
+  public boolean isInverted;
+  
+  public void startLaunching(){
+    motorLauncher.set(ControlMode.PercentOutput, LauncherConstants.LauncherSpeed);
+    isRunning = true;
+  }
+
+  public void stopLauncher(){
+    isRunning = false;
+  }
+
+
+  public void invertedIntakeMotor (){
+    isInverted = !this.isInverted;
+    int sign = isInverted ? 1:-1;
+    if(isRunning) motorLauncher.set(ControlMode.PercentOutput, sign * LauncherConstants.LauncherSpeed);
+  }
+  public void set(double speed) {
+    motorLauncher.set(ControlMode.PercentOutput, speed);
+  }
   public void stop() {
     set(0.0);
   }
 
   @Override
   public void periodic() {
+    SmartDashboard.putBoolean("LauncherStatus", isRunning);
     // This method will be called once per scheduler run
   }
 }
