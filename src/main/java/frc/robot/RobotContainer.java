@@ -88,6 +88,9 @@ public class RobotContainer {
     final JoystickButton dpadUp = new JoystickButton(driverController, 5);
     
     dpadUp.whenPressed(new FireLauncher(launcher, 0.50));
+
+    
+  
   }
 
   /**
