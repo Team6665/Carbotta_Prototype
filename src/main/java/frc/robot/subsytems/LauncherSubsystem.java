@@ -13,23 +13,23 @@ import frc.robot.Constants.DriveTrainConstants;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 public class LauncherSubsystem extends SubsystemBase {
-  MotorController upperLauncherMotor = (MotorController) new WPI_TalonSRX(DriveTrainConstants.FrontLeftMotorPort);
-  MotorController lowerLauncherMotor = (MotorController) new WPI_TalonSRX(DriveTrainConstants.RearLeftMotorPort);
+  MotorController LauncherMotor = (MotorController) new WPI_TalonSRX(DriveTrainConstants.LauncherMotor);
+  //MotorController lowerLauncherMotor = (MotorController) new WPI_TalonSRX(DriveTrainConstants.RearLeftMotorPort);
 
-  MotorControllerGroup launcherMotors = new  MotorControllerGroup(upperLauncherMotor,lowerLauncherMotor);
+  //MotorControllerGroup launcherMotors = new  MotorControllerGroup(upperLauncherMotor,lowerLauncherMotor);
 
   /** Creates a new Launcher. */
   public LauncherSubsystem() {
-    upperLauncherMotor = (MotorController) new WPI_TalonSRX(DriveTrainConstants.FrontLeftMotorPort);
-    lowerLauncherMotor = (MotorController) new WPI_TalonSRX(DriveTrainConstants.RearLeftMotorPort);
+    LauncherMotor = (MotorController) new WPI_TalonSRX(DriveTrainConstants.LauncherMotor);
+    //lowerLauncherMotor = (MotorController) new WPI_TalonSRX(DriveTrainConstants.RearLeftMotorPort);
     
-    lowerLauncherMotor.setInverted(true);
+    //lowerLauncherMotor.setInverted(true);
 
     //MotorControllerGroup launcherMotors = new  MotorControllerGroup(upperLauncherMotor,lowerLauncherMotor);
   }
 
   public void set(Double speed) {
-    launcherMotors.set(speed);
+    LauncherMotor.set(speed);
   }
 
   public void stop() {
