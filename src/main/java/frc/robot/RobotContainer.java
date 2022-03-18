@@ -87,7 +87,7 @@ public class RobotContainer {
     new JoystickButton(driverController, Button.kB.value).whenHeld(new HalveDriveSpeed(DriveTrain));
     final JoystickButton dpadUp = new JoystickButton(driverController, 5);
     
-    dpadUp.whenPressed(new FireLauncher(launcher, 0.70));
+    dpadUp.whenPressed(new FireLauncher(launcher, 0.90));
 
     
   
