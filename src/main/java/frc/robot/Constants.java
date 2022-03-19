@@ -28,6 +28,8 @@ public final class Constants {
         public static final int integral = 0;
         public static final int previous_error = 0;
         public static final int setpoint = 0;
+        //public static final int FeederMotor1 = 12;
+        //public static final int FeederMotor2 = 14;
     }
     
     public static final class LauncherConstants {
@@ -38,8 +40,8 @@ public final class Constants {
     }
 
     public static final class FeederConstant {
-        public static final int frontFeederMotor = 0;
-        public static final int backFeederMotor = 0;
+        public static final int frontFeederMotor = 12;
+        public static final int backFeederMotor = 14;
         public static final int frontFeederSpeed = 0;
         public static final int backFeederSpeed = 0;
 

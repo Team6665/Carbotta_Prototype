@@ -80,6 +80,7 @@ public class RobotContainer {
 
     new JoystickButton(driverController, Button.kRightBumper.value).whenPressed(new IntakeDeploy(intake));
     new JoystickButton(driverController, Button.kLeftBumper.value).whenPressed(new IntakeRetract(intake));
+    //new JoystickButton(driverController, Button.kB.value).whenHeld(new FeedIn(feeder,0.75));
 
     new JoystickButton(driverController, Button.kA.value).whenHeld(new IntakeRun(intake, 0.75));
     new JoystickButton(driverController, Button.kX.value).whenHeld(new FireLauncher(launcher, 0.75));
