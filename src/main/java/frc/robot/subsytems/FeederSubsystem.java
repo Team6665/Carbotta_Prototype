@@ -7,19 +7,21 @@ package frc.robot.subsytems;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants;
 import frc.robot.Constants.FeederConstant;
+import edu.wpi.first.wpilibj.motorcontrol.MotorControllerGroup;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 import com.ctre.phoenix.motorcontrol.ControlMode;
 
 public class FeederSubsystem extends SubsystemBase {
-  WPI_TalonSRX motorFeederFront = new WPI_TalonSRX(FeederConstant.frontFeederMotor);
-  WPI_TalonSRX motorFeederBack = new WPI_TalonSRX(FeederConstant.backFeederMotor);
+  private WPI_TalonSRX motorFeederFront = new WPI_TalonSRX(FeederConstant.frontFeederMotor);
+  private WPI_TalonSRX motorFeederBack = new WPI_TalonSRX(FeederConstant.backFeederMotor);
+  private final MotorControllerGroup feederMotors = new  MotorControllerGroup(motorFeederFront,motorFeederBack);
   /** Creates a new FeederSubsystem. */
   
   public FeederSubsystem() {
     motorFeederFront = new WPI_TalonSRX(FeederConstant.frontFeederMotor);
-    motorFeederFront = new WPI_TalonSRX(FeederConstant.backFeederMotor);
+    motorFeederBack = new WPI_TalonSRX(FeederConstant.backFeederMotor);
   }
 
   public boolean isRunning;
@@ -29,6 +31,13 @@ public class FeederSubsystem extends SubsystemBase {
     motorFeederFront.set(ControlMode.PercentOutput, Constants.FeederConstant.frontFeederSpeed);
     motorFeederBack.set(ControlMode.PercentOutput, Constants.FeederConstant.backFeederSpeed);
     isRunning = true;
+  }
+
+  public void set(double speed) {
+    feederMotors.set(speed);
+  }
+  public void stop() {
+    set(0.0);
   }
 
   public void stopFeeding(){

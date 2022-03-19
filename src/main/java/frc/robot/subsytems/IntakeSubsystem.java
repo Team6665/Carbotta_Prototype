@@ -25,6 +25,7 @@ public class IntakeSubsystem extends SubsystemBase {
   public IntakeSubsystem() {
    // motorIntake.configFactoryDefault();
     motorIntake = new WPI_TalonSRX(DriveTrainConstants.intakeMotor);
+    motorIntake.setInverted(true);
     //deployIntake = new DoubleSolenoid(PneumaticsModuleType.CTREPCM, PneumaticsConstants.intakeFront, PneumaticsConstants.intakeBack);
   } 
 
