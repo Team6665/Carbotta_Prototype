@@ -14,22 +14,26 @@ import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 import com.ctre.phoenix.motorcontrol.ControlMode;
 
 public class FeederSubsystem extends SubsystemBase {
-  private WPI_TalonSRX motorFeederFront = new WPI_TalonSRX(FeederConstant.frontFeederMotor);
-  private WPI_TalonSRX motorFeederBack = new WPI_TalonSRX(FeederConstant.backFeederMotor);
-  private final MotorControllerGroup feederMotors = new  MotorControllerGroup(motorFeederFront,motorFeederBack);
+  private WPI_TalonSRX motorFeederLeft = new WPI_TalonSRX(FeederConstant.LeftFeederMotor);
+  private WPI_TalonSRX motorFeederRight = new WPI_TalonSRX(FeederConstant.RightFeederMotor);
+  private final MotorControllerGroup feederMotors = new  MotorControllerGroup(motorFeederLeft,motorFeederRight);
   /** Creates a new FeederSubsystem. */
   
   public FeederSubsystem() {
-    motorFeederFront = new WPI_TalonSRX(FeederConstant.frontFeederMotor);
-    motorFeederBack = new WPI_TalonSRX(FeederConstant.backFeederMotor);
+    motorFeederLeft = new WPI_TalonSRX(FeederConstant.LeftFeederMotor);
+    motorFeederRight = new WPI_TalonSRX(FeederConstant.RightFeederMotor);
+
+    motorFeederLeft.setInverted(true);
+    motorFeederRight.setInverted(true);
+
   }
 
   public boolean isRunning;
   public boolean isInverted;
 
   public void startFeeding(){
-    motorFeederFront.set(ControlMode.PercentOutput, Constants.FeederConstant.frontFeederSpeed);
-    motorFeederBack.set(ControlMode.PercentOutput, Constants.FeederConstant.backFeederSpeed);
+    motorFeederLeft.set(ControlMode.PercentOutput, Constants.FeederConstant.LeftFeederSpeed);
+    motorFeederRight.set(ControlMode.PercentOutput, Constants.FeederConstant.RightFeederSpeed);
     isRunning = true;
   }
 
@@ -47,8 +51,8 @@ public class FeederSubsystem extends SubsystemBase {
   public void inverFeeder(){
     isInverted = !this.isInverted;
     int sign = isInverted ? 1: -1;
-    if (isRunning) motorFeederFront.set(ControlMode.PercentOutput, sign * Constants.FeederConstant.frontFeederSpeed);  
-    if (isRunning) motorFeederBack.set(ControlMode.PercentOutput, sign* Constants.FeederConstant.backFeederSpeed);
+    if (isRunning) motorFeederLeft.set(ControlMode.PercentOutput, sign * Constants.FeederConstant.LeftFeederSpeed);  
+    if (isRunning) motorFeederRight.set(ControlMode.PercentOutput, sign* Constants.FeederConstant.RightFeederSpeed);
 
   }
   

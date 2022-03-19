@@ -40,10 +40,10 @@ public final class Constants {
     }
 
     public static final class FeederConstant {
-        public static final int frontFeederMotor = 12;
-        public static final int backFeederMotor = 14;
-        public static final int frontFeederSpeed = 0;
-        public static final int backFeederSpeed = 0;
+        public static final int LeftFeederMotor = 14;
+        public static final int RightFeederMotor = 12;
+        public static final int LeftFeederSpeed = 0;
+        public static final int RightFeederSpeed = 0;
 
     }
     public static final class PneumaticsConstants {
